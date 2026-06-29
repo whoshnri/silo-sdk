@@ -66,11 +66,11 @@ class Silo {
     });
 
     if (!res.ok) {
-      const body = await res.json().catch(() => ({}));
+      const body = await res.json().catch(() => ({})) as any;
       throw new Error(body.error ?? `SET failed: ${res.statusText}`);
     }
 
-    return await res.json();
+    return await res.json() as any;
   }
 
   /**
@@ -90,11 +90,11 @@ class Silo {
     if (res.status === 404) return null;
 
     if (!res.ok) {
-      const body = await res.json().catch(() => ({}));
+      const body = await res.json().catch(() => ({})) as any;
       throw new Error(body.error ?? `GET failed: ${res.statusText}`);
     }
 
-    return await res.json();
+    return await res.json() as any;
   }
 
   /**
@@ -110,11 +110,11 @@ class Silo {
     });
 
     if (!res.ok) {
-      const body = await res.json().catch(() => ({}));
+      const body = await res.json().catch(() => ({})) as any;
       throw new Error(body.error ?? `DELETE failed: ${res.statusText}`);
     }
 
-    return await res.json();
+    return await res.json() as any;
   }
 }
 

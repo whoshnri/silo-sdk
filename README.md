@@ -1,13 +1,13 @@
-# @silo/sdk
+# @whoshnri/silo
 
-A lightweight, high-performance Node.js & Deno client for the **Silo** self-hosted key-value cache.
+A lightweight, high-performance Node.js & Deno client and CLI for the **Silo** self-hosted key-value cache.
 
 ## Installation
 
 ### Node.js (npm / yarn / pnpm)
 
 ```bash
-npm install @silo/sdk
+npm install @whoshnri/silo
 ```
 
 ### Deno
@@ -15,7 +15,7 @@ npm install @silo/sdk
 Import directly from JSR:
 
 ```typescript
-import { Silo } from "jsr:@silo/sdk";
+import { Silo } from "jsr:@whoshnri/silo";
 ```
 
 ---
@@ -35,7 +35,7 @@ import { Silo } from "jsr:@silo/sdk";
 Initialize the client with your Silo server URL, bucket ID, and bucket access key:
 
 ```typescript
-import { Silo } from "@silo/sdk"; // or "jsr:@silo/sdk" on Deno
+import { Silo } from "@whoshnri/silo"; // or "jsr:@whoshnri/silo" on Deno
 
 const cache = new Silo({
   url: "http://localhost:8000",
