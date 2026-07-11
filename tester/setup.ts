@@ -11,13 +11,13 @@
 
 import { Silo } from "../mod.ts";
 
-const url = Deno.env.get("SILO_URL");
-const bucketId = Deno.env.get("BUCKET_ID");
-const bucketKey = Deno.env.get("BUCKET_KEY");
+const url = process.env.SILO_URL;
+const bucketId = process.env.BUCKET_ID;
+const bucketKey = process.env.BUCKET_KEY;
 
 if (!url || !bucketId || !bucketKey) {
   console.error("Missing env vars: SILO_URL, BUCKET_ID, BUCKET_KEY");
-  Deno.exit(1);
+  process.exit(1);
 }
 
 export const cache = new Silo({ url, bucketId, bucketKey });

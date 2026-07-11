@@ -25,7 +25,7 @@ await build({
   test: false,
   package: {
     name: "@whoshnri/silo",
-    version: "0.1.0",
+    version: "0.1.1",
     description: "Client SDK and CLI tool for the Silo self-hosted key-value cache",
     license: "MIT",
     repository: {

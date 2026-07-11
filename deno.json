@@ -1,11 +1,11 @@
 {
   "name": "@silo/sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "exports": "./mod.ts",
   "tasks": {
     "test": "deno test --allow-net --env-file --allow-env tester/",
     "bench": "deno run --allow-net --env-file --allow-env tester/bench.ts",
-    "build": "deno run --allow-read --allow-write --allow-net --allow-env --allow-sys build_npm.ts"
+    "build": "deno run --allow-read --allow-write --allow-net --allow-env --allow-sys --allow-run=npm build_npm.ts"
   },
   "imports": {
     "@cliffy/command": "jsr:@cliffy/command@^1.2.1",
