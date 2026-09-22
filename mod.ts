@@ -8,6 +8,8 @@
  *   await cache.delete("user:123");
  */
 
+// helper to validate if a key is present or not -- if all the config values are provided
+
 /**
  * Configuration options for initializing the Silo cache client.
  */
@@ -38,6 +40,15 @@ class Silo {
     this.bucketKey = config.bucketKey;
   }
 
+  
+  private getConfig(silo_instance: Silo) {
+    if (!silo_instance.url || !silo_instance.bucketId || !silo_instance.bucketKey) {
+      throw new Error("Missing required configuration values");
+    }
+    return true
+  }
+
+
   private endpoint(key: string): string {
     return `${this.url}/v1/${this.bucketId}/${key}`;
   }
@@ -59,6 +70,7 @@ class Silo {
    * @returns A promise that resolves to the set operation metadata.
    */
   async set(key: string, value: unknown, ttl?: number): Promise<{ bucketId: string; key: string; ttl: number }> {
+    this.getConfig(this);
     const res = await fetch(this.endpoint(key), {
       method: "POST",
       headers: this.headers(),
@@ -82,6 +94,8 @@ class Silo {
    * @returns A promise resolving to the value envelope, or null if key does not exist or has expired.
    */
   async get<T = unknown>(key: string): Promise<{ value: T; expiresAt: number } | null> {
+    this.getConfig(this);
+    
     const res = await fetch(this.endpoint(key), {
       method: "GET",
       headers: this.headers(),
@@ -104,6 +118,7 @@ class Silo {
    * @returns A promise resolving to the deletion metadata.
    */
   async delete(key: string): Promise<{ bucketId: string; key: string; deleted: true }> {
+    this.getConfig(this);
     const res = await fetch(this.endpoint(key), {
       method: "DELETE",
       headers: this.headers(),
